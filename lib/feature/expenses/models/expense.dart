@@ -4,6 +4,7 @@ class Expense {
   final String category;
   final String? description;
   final DateTime date;
+  final String imageUrl;
 
   Expense({
     required this.id,
@@ -11,6 +12,7 @@ class Expense {
     required this.category,
     this.description,
     required this.date,
+    required this.imageUrl,
   });
 
   Expense copyWith({
@@ -19,6 +21,7 @@ class Expense {
     String? category,
     String? description,
     DateTime? date,
+    String? imageUrl,
   }) {
     return Expense(
       id: id ?? this.id,
@@ -26,6 +29,7 @@ class Expense {
       category: category ?? this.category,
       description: description ?? this.description,
       date: date ?? this.date,
+      imageUrl: imageUrl ?? this.imageUrl
     );
   }
 }
