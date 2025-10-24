@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../models/expense.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class ExpenseRow extends StatelessWidget {
   final Expense expense;
@@ -19,6 +20,13 @@ class ExpenseRow extends StatelessWidget {
     return Card(
       margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
       child: ListTile(
+        leading: CachedNetworkImage(
+          imageUrl: expense.imageUrl,
+          width: 40,
+          height: 40,
+          placeholder: (context, url) => const CircularProgressIndicator(strokeWidth: 2),
+          errorWidget: (context, url, error) => const Icon(Icons.broken_image),
+        ),
         onTap: onTap,
         title: Text(
           expense.category,
