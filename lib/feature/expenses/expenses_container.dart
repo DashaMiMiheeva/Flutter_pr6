@@ -20,7 +20,14 @@ class _ExpensesContainerState extends State<ExpensesContainer> {
 
   final List<String> _categories = ['Еда', 'Транспорт', 'Покупки', 'Развлечения', 'Прочее'];
 
-  DateTime? _selectedDate; // null = все расходы
+  final Map<String, String> _categoryImages = {
+    'Еда': 'https://cdn-icons-png.flaticon.com/512/1046/1046857.png',
+    'Транспорт': 'https://cdn-icons-png.flaticon.com/512/3124/3124296.png',
+    'Покупки': 'https://cdn-icons-png.flaticon.com/512/891/891462.png',
+    'Развлечения': 'https://cdn-icons-png.flaticon.com/512/3107/3107849.png',
+    'Прочее': 'https://cdn-icons-png.flaticon.com/512/2917/2917995.png',
+  };
+  DateTime? _selectedDate;
 
   void _showAdd() => setState(() => _current = _Screen.add);
   void _showList() => setState(() => _current = _Screen.list);
@@ -56,6 +63,7 @@ class _ExpensesContainerState extends State<ExpensesContainer> {
       category: category,
       description: description,
       date: date,
+      imageUrl: _categoryImages[category]!,
     );
     setState(() {
       _expenses.insert(0, newExpense);
